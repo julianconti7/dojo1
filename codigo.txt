@@ -1,0 +1,60 @@
+// código C++
+// Ezequiel gonzalez,Juan Ignacio Feas,Julian Conti
+intLEDVERDE1 = 13;
+intLEDVERDE2 = 12;
+int LEDAMARILLO1 = 11;
+int LEDAMARILLO2 = 10;
+intLEDROJO1=9;
+intLEDROJO2=8;
+int ZUMBADOR = 7;
+//declaramos los pinos
+configuración vacía () 
+{
+  Serial.begin(9600);
+  pinMode(LEDVERDE1, SALIDA);
+  pinMode(LEDVERDE2, SALIDA);
+  pinMode(LEDAMARILLO1, SALIDA);
+  pinMode(LEDAMARILLO2, SALIDA);
+  pinMode(LEDROJO1, SALIDA);
+  pinMode(LEDROJO2, SALIDA);
+  pinMode(BUZZLER, SALIDA);
+//inicializamos los pinos
+}
+
+
+void loop() //semaforo:
+{
+  escritura digital(LEDVERDE1, ALTO);
+  escritura digital(LEDVERDE2, ALTO);
+  
+  retraso (45000);
+  
+  escritura digital(LEDVERDE1, BAJO);
+  escritura digital(LEDVERDE2, BAJO);
+  escritura digital(LEDAMARILLO1, ALTO);
+  escritura digital(LEDAMARILLO2, ALTO);
+  
+  para (int CantPitidos = 0; CantPitidos < 2; CantPitidos++)
+  {
+    tono(BUZZLER, 500);
+    retraso (1000);
+    noTono(BUZZLER);
+    retraso (2000);
+  }
+  
+  escritura digital(LEDAMARILLO1, BAJO);
+  escritura digital(LEDAMARILLO2, BAJO);
+  escritura digital(LEDROJO1, ALTO);
+  escritura digital(LEDROJO2, ALTO);
+  
+  para (int CantPitidos = 0; CantPitidos < 30; CantPitidos++)
+  {
+    tono(BUZZLER, 1000);
+    retraso (500);
+    noTono(BUZZLER);
+    retraso (500);
+  }
+  
+  escritura digital(LEDROJO1, BAJO);
+  escritura digital(LEDROJO2, BAJO);
+}
